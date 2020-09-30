@@ -7,7 +7,7 @@ export class CartService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
 
   addToCart(product) {
@@ -25,5 +25,11 @@ export class CartService {
 
   getShippingPrices() {
     return this.http.get('/assets/shipping.json');
+  }
+
+  removeItem(item) {
+    let index = this.items.indexOf(item);
+    this.items.splice(index, 1);
+    return this.items;
   }
 }
